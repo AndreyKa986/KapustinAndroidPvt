@@ -30,14 +30,14 @@ class Dz0Activity : Activity() {
         variable = if (variable == 0) {
             textViewOne.text = getText(R.string.world)
             textViewTwo.text = getText(R.string.hello)
-            textViewOne.setBackgroundColor(getColor(R.color.Blue))
-            textViewTwo.setBackgroundColor(getColor(R.color.Red))
+            textViewOne.setBackgroundColor(getColor(R.color.blue))
+            textViewTwo.setBackgroundColor(getColor(R.color.red))
             1
         }else{
             textViewOne.text = getText(R.string.hello)
             textViewTwo.text = getText(R.string.world)
-            textViewOne.setBackgroundColor(getColor(R.color.Red))
-            textViewTwo.setBackgroundColor(getColor(R.color.Blue))
+            textViewOne.setBackgroundColor(getColor(R.color.red))
+            textViewTwo.setBackgroundColor(getColor(R.color.blue))
             0
         }
     }

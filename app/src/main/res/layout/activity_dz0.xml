@@ -11,7 +11,7 @@
             android:textSize="50sp"
             android:textAllCaps="true"
             android:text="@string/hello"
-            android:background="@color/Red"
+            android:background="@color/red"
             android:layout_margin="10dp"
             android:clickable="true"
             android:focusable="true"/>
@@ -23,7 +23,7 @@
             android:textSize="50sp"
             android:textAllCaps="true"
             android:text="@string/world"
-            android:background="@color/Blue"
+            android:background="@color/blue"
             android:layout_margin="10dp"
             android:clickable="true"
             android:focusable="true"/>
@@ -35,7 +35,7 @@
             android:textSize="50sp"
             android:textAllCaps="false"
             android:text="@string/button"
-            android:background="@color/Yellow"
+            android:background="@color/yellow"
             android:layout_margin="10dp"/>
 
 </LinearLayout>

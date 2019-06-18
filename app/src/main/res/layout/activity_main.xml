@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Button
+            android:id="@+id/dz0"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/black"
+            android:text="@string/DZ00"
+            android:textSize="75sp"
+            android:textColor="@color/white"
+            android:layout_margin="15dp"/>
+
+    <Button
+            android:id="@+id/dz1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/black"
+            android:text="@string/DZ01"
+            android:textSize="75sp"
+            android:textColor="@color/white"
+            android:layout_margin="15dp"/>
+
+</LinearLayout>
