@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-            android:id="@+id/textViewOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50sp"
-            android:textAllCaps="true"
-            android:text="@string/hello"
-            android:background="@color/red"
-            android:layout_margin="10dp"
-            android:clickable="true"
-            android:focusable="true"/>
+        android:id="@+id/textViewOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/red"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/hello"
+        android:textAllCaps="true"
+        android:textSize="50sp" />
 
     <TextView
-            android:id="@+id/textViewTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50sp"
-            android:textAllCaps="true"
-            android:text="@string/world"
-            android:background="@color/blue"
-            android:layout_margin="10dp"
-            android:clickable="true"
-            android:focusable="true"/>
+        android:id="@+id/textViewTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/blue"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/world"
+        android:textAllCaps="true"
+        android:textSize="50sp" />
 
     <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50sp"
-            android:textAllCaps="false"
-            android:text="@string/button"
-            android:background="@color/yellow"
-            android:layout_margin="10dp"/>
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/yellow"
+        android:text="@string/button"
+        android:textAllCaps="false"
+        android:textSize="50sp" />
 
 </LinearLayout>

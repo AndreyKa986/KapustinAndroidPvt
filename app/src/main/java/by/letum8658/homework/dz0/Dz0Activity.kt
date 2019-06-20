@@ -8,7 +8,7 @@ import android.widget.TextView
 import by.letum8658.homework.R
 
 class Dz0Activity : Activity() {
-     private var variable = 0
+    private var variable = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dz0)
@@ -33,7 +33,7 @@ class Dz0Activity : Activity() {
             textViewOne.setBackgroundColor(getColor(R.color.blue))
             textViewTwo.setBackgroundColor(getColor(R.color.red))
             1
-        }else{
+        } else {
             textViewOne.text = getText(R.string.hello)
             textViewTwo.text = getText(R.string.world)
             textViewOne.setBackgroundColor(getColor(R.color.red))
