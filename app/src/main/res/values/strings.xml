@@ -3,4 +3,9 @@
     <string name="hello">Hello</string>
     <string name="world">World</string>
     <string name="button">Button</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="create_account">Create account</string>
+    <string name="forgot_username_password"><u>Forgot your username/password</u></string>
 </resources>
