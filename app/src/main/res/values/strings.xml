@@ -12,4 +12,13 @@
     <string name="madagascarFlag">Madagascar Flag</string>
     <string name="thailandFlag">Thailand Flag</string>
     <string name="denmarkFlag">Denmark Flag</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="create_account">Create account</string>
+    <string name="forgot_username_password"><u>Forgot your username/password</u></string>
+    <string name="show_me_the_picture">Show me the picture</string>
+    <string name="enter_the_link">Enter the link</string>
+    <string name="sorry">Sorry, load was failed\nYou can try with test link</string>
+    <string name="link">http://developer.alexanderklimov.ru/android/images/android_cat.jpg</string>
 </resources>
