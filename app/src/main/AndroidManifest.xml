@@ -14,8 +14,8 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity android:name=".dz0.Dz0Activity" />
-        <activity android:name=".dz2.Dz2ActivityClassWork" />
-        <activity android:name=".dz2.Dz2ActivityHomeWork">
+        <activity android:name=".dz2.Dz2ClassActivity" />
+        <activity android:name=".dz2.Dz2HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

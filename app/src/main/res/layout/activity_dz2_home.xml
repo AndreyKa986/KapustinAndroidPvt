@@ -18,7 +18,8 @@
             android:layout_gravity="center"
             android:indeterminateTint="@color/white"
             android:minWidth="150dp"
-            android:minHeight="150dp" />
+            android:minHeight="150dp"
+            android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/pictureFromLink"

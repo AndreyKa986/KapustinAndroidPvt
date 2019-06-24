@@ -17,16 +17,15 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 
-class Dz2ActivityHomeWork : Activity() {
+class Dz2HomeActivity : Activity() {
     private lateinit var image: ImageView
     private lateinit var progressBar: ProgressBar
     private lateinit var link: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dz2_homework)
+        setContentView(R.layout.activity_dz2_home)
         progressBar = findViewById(R.id.progress_circular)
-        progressBar.visibility = View.INVISIBLE
         image = findViewById(R.id.pictureFromLink)
         link = findViewById(R.id.linkForPicture)
         findViewById<Button>(R.id.showPictureButton)
@@ -49,11 +48,10 @@ class Dz2ActivityHomeWork : Activity() {
                 ): Boolean {
                     progressBar.visibility = View.INVISIBLE
                     Toast.makeText(
-                        this@Dz2ActivityHomeWork, "Sorry, load was failed\n" +
-                                "You can try with test link", Toast.LENGTH_SHORT
+                        this@Dz2HomeActivity, getString(R.string.sorry), Toast.LENGTH_SHORT
                     )
                         .show()
-                    link.setText("http://developer.alexanderklimov.ru/android/images/android_cat.jpg")
+                    link.setText(getString(R.string.link))
                     return false
                 }
 
