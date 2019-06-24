@@ -13,12 +13,25 @@
             <Button
                 android:id="@+id/dz0"
                 style="@style/ButtonForDz"
-                android:text="@string/DZ00" />
+                android:text="@string/dz00" />
 
             <Button
                 android:id="@+id/dz1"
                 style="@style/ButtonForDz"
-                android:text="@string/DZ01" />
+                android:text="@string/dz01" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/LinerLayoutForDz">
+
+            <Button
+                android:id="@+id/dz2c"
+                style="@style/ButtonForDz"
+                android:text="@string/dz02c" />
+
+            <Button
+                android:id="@+id/dz2h"
+                style="@style/ButtonForDz"
+                android:text="@string/dz02h" />
         </LinearLayout>
 
         <LinearLayout style="@style/LinerLayoutForDz">
@@ -26,7 +39,7 @@
             <Button
                 android:id="@+id/dz3"
                 style="@style/ButtonForDz"
-                android:text="@string/DZ03" />
+                android:text="@string/dz03" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
