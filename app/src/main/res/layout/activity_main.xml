@@ -40,6 +40,11 @@
                 android:id="@+id/dz3"
                 style="@style/ButtonForDz"
                 android:text="@string/dz03" />
+
+            <Button
+                android:id="@+id/dz4"
+                style="@style/ButtonForDz"
+                android:text="@string/dz04" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
