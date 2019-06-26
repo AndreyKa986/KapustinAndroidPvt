@@ -19,16 +19,16 @@ class Dz4ClockView : View {
 
     private val circlePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val rectFshort = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val rectFlong = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val shortLine = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val longLine = Paint(Paint.ANTI_ALIAS_FLAG)
     private val hourPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val minutePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val secondPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var cx = 0f
     private var cy = 0f
     private var radius = 0f
-    private var line = 0f
-    private var hourLine = 0f
+    private var handLine = 0f
+    private var handHourLine = 0f
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -49,11 +49,11 @@ class Dz4ClockView : View {
         textPaint.color = ContextCompat.getColor(context, R.color.white)
         textPaint.textSize = resources.getDimension(R.dimen.number_text_size)
 
-        rectFshort.color = ContextCompat.getColor(context, R.color.white)
-        rectFshort.strokeWidth = 4f
+        shortLine.color = ContextCompat.getColor(context, R.color.white)
+        shortLine.strokeWidth = 4f
 
-        rectFlong.color = ContextCompat.getColor(context, R.color.white)
-        rectFlong.strokeWidth = 6f
+        longLine.color = ContextCompat.getColor(context, R.color.white)
+        longLine.strokeWidth = 6f
 
         hourPaint.color = ContextCompat.getColor(context, R.color.white)
         hourPaint.strokeWidth = 20f
@@ -70,8 +70,8 @@ class Dz4ClockView : View {
         cx = width / 2f
         cy = height / 2f
         radius = min(width, height) / 2f - 20f
-        line = radius * 0.72f
-        hourLine = radius * 0.45f
+        handLine = radius * 0.72f
+        handHourLine = radius * 0.45f
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -117,15 +117,15 @@ class Dz4ClockView : View {
         for (i in 0..59) {
             when {
                 i % 15 == 0 -> {
-                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 25, rectFshort)
+                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 25, shortLine)
                     canvas.rotate(6f, cx, cy)
                 }
                 i % 5 == 0 -> {
-                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 75, rectFlong)
+                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 75, longLine)
                     canvas.rotate(6f, cx, cy)
                 }
                 else -> {
-                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 25, rectFshort)
+                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 25, shortLine)
                     canvas.rotate(6f, cx, cy)
                 }
             }
@@ -143,24 +143,24 @@ class Dz4ClockView : View {
         canvas.drawLine(
             cx,
             cy,
-            cx + cos(hAngle).toFloat() * hourLine,
-            cy + sin(hAngle).toFloat() * hourLine,
+            cx + cos(hAngle).toFloat() * handHourLine,
+            cy + sin(hAngle).toFloat() * handHourLine,
             hourPaint
         )
 
         canvas.drawLine(
             cx,
             cy,
-            cx + cos(minAngle).toFloat() * line,
-            cy + sin(minAngle).toFloat() * line,
+            cx + cos(minAngle).toFloat() * handLine,
+            cy + sin(minAngle).toFloat() * handLine,
             minutePaint
         )
 
         canvas.drawLine(
             cx,
             cy,
-            cx + cos(secAngle).toFloat() * line,
-            cy + sin(secAngle).toFloat() * line,
+            cx + cos(secAngle).toFloat() * handLine,
+            cy + sin(secAngle).toFloat() * handLine,
             secondPaint
         )
     }
