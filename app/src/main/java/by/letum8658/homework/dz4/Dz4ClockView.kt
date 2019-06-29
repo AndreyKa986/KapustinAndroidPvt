@@ -19,8 +19,8 @@ class Dz4ClockView : View {
 
     private val circlePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val shortLine = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val longLine = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val shortLinePaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val longLinePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val hourPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val minutePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val secondPaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -49,11 +49,11 @@ class Dz4ClockView : View {
         textPaint.color = ContextCompat.getColor(context, R.color.white)
         textPaint.textSize = resources.getDimension(R.dimen.number_text_size)
 
-        shortLine.color = ContextCompat.getColor(context, R.color.white)
-        shortLine.strokeWidth = 4f
+        shortLinePaint.color = ContextCompat.getColor(context, R.color.white)
+        shortLinePaint.strokeWidth = 4f
 
-        longLine.color = ContextCompat.getColor(context, R.color.white)
-        longLine.strokeWidth = 6f
+        longLinePaint.color = ContextCompat.getColor(context, R.color.white)
+        longLinePaint.strokeWidth = 6f
 
         hourPaint.color = ContextCompat.getColor(context, R.color.white)
         hourPaint.strokeWidth = 20f
@@ -77,7 +77,6 @@ class Dz4ClockView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         canvas ?: return
-        canvas.drawColor(ContextCompat.getColor(context, R.color.black))
         canvas.drawCircle(cx, cy, radius, circlePaint)
         drawNumber(canvas)
         drawLines(canvas)
@@ -117,15 +116,15 @@ class Dz4ClockView : View {
         for (i in 0..59) {
             when {
                 i % 15 == 0 -> {
-                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 25, shortLine)
+                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 25, shortLinePaint)
                     canvas.rotate(6f, cx, cy)
                 }
                 i % 5 == 0 -> {
-                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 75, longLine)
+                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 75, longLinePaint)
                     canvas.rotate(6f, cx, cy)
                 }
                 else -> {
-                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 25, shortLine)
+                    canvas.drawLine(cx, cy - radius, cx, cy - radius + 25, shortLinePaint)
                     canvas.rotate(6f, cx, cy)
                 }
             }
