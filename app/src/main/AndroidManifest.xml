@@ -21,10 +21,20 @@
         </activity>
 
         <activity android:name=".dz0.Dz0Activity" />
+
         <activity android:name=".dz1.Dz1Activity" />
+
         <activity android:name=".dz2.Dz2ClassActivity" />
         <activity android:name=".dz2.Dz2HomeActivity" />
+
         <activity android:name=".dz3.Dz3Activity" />
+
         <activity android:name=".dz4.Dz4Activity" />
+
+        <activity
+            android:name=".dz6.Dz6StudentListActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".dz6.Dz6StudentDetailsActivity" />
+        <activity android:name=".dz6.Dz6StudentEditActivity" />
     </application>
 </manifest>
