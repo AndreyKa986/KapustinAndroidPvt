@@ -25,7 +25,7 @@ class Dz6StudentListAdapter(private var items: List<Dz6Student>, private val lis
         return items.size
     }
 
-    fun searchAdapter(studentList: List<Dz6Student>) {
+    fun giveStudentListBySearch(studentList: List<Dz6Student>) {
         items = studentList
         notifyDataSetChanged()
     }

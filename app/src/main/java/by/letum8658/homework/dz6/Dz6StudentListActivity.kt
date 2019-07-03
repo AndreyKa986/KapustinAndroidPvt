@@ -32,15 +32,13 @@ class Dz6StudentListActivity : Activity(), Dz6StudentListAdapter.ClickListener {
         search.addTextChangedListener(object : TextWatcher {
 
             private var timer = Timer()
-            var searchText = ""
 
-            override fun afterTextChanged(s: Editable?) {
+            override fun afterTextChanged(string: Editable?) {
                 timer.cancel()
                 timer = Timer()
                 timer.schedule(300L) {
-                    searchText = s.toString()
                     runOnUiThread {
-                        search(searchText)
+                        searchByStudents(string.toString())
                     }
                 }
             }
@@ -56,8 +54,8 @@ class Dz6StudentListActivity : Activity(), Dz6StudentListAdapter.ClickListener {
         }
     }
 
-    private fun search(text: String) {
-        adapter.searchAdapter(Dz6StudentManager.searchList(text))
+    private fun searchByStudents(text: String) {
+        adapter.giveStudentListBySearch(Dz6StudentManager.searchList(text))
     }
 
     override fun onStudentClick(item: Dz6Student) {

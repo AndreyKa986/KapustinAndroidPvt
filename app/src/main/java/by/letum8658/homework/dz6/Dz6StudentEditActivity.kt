@@ -14,6 +14,7 @@ class Dz6StudentEditActivity : Activity() {
     private var urlLink: String = " "
     private var name: String = " "
     private var age: Int = 0
+    private var isEnterRight: Boolean = true
 
     companion object {
         private const val STUDENT_ID_EXTRA = "student_id_extra"
@@ -30,68 +31,77 @@ class Dz6StudentEditActivity : Activity() {
 
         val student = Dz6StudentManager.getStudentById(id)
 
-        if (id < 0) {
-            dz6saveButton.setOnClickListener {
+        student?.let {
+
+            dz6urlEditText.setText(it.imageUrl)
+
+            dz6nameEditText.setText(it.name)
+
+            dz6ageEditText.setText(it.age.toString())
+        }
+
+        dz6saveButton.setOnClickListener {
+            checkCorrectEnterFields()
+            if (id < 0) {
                 saveNewStudent()
-            }
-        } else {
-            student?.let {
-
-                dz6urlEditText.setText(student.imageUrl)
-
-                dz6nameEditText.setText(student.name)
-
-                dz6ageEditText.setText(student.age.toString())
-
-                dz6saveButton.setOnClickListener {
-                    updateStudent()
-                }
+            } else {
+                updateStudent()
             }
         }
-    }
-
-    private fun createStudent() {
-        newStudent = Dz6Student()
-
-        urlLink = dz6urlEditText.text.toString()
-        newStudent.imageUrl = urlLink
-
-        name = dz6nameEditText.text.toString()
-        if (name.isNotBlank()) {
-            newStudent.name = name
-        }
-
-        dz6ageEditText.text.toString().toIntOrNull()?.let {
-            age = dz6ageEditText.text.toString().toInt()
-        }
-        newStudent.age = age
     }
 
     private fun updateStudent() {
-        createStudent()
-
-        if (Dz6StudentManager.isUrl(urlLink)) {
-            newStudent.id = id
-
-            Dz6StudentManager.updateStudent(id, newStudent)
+        if (isEnterRight) {
+            newStudent = Dz6Student(urlLink, name, age, id)
+            Dz6StudentManager.updateStudent(newStudent)
             val intent = Intent(this, Dz6StudentListActivity::class.java)
             startActivity(intent)
-            finish()
         } else {
-            Toast.makeText(this, "Incorrect Link", Toast.LENGTH_SHORT).show()
+            isEnterRight = true
         }
+        finish()
     }
 
     private fun saveNewStudent() {
-        createStudent()
-
-        if (Dz6StudentManager.isUrl(urlLink)) {
+        if (isEnterRight) {
+            id = Dz6StudentManager.getId()
+            newStudent = Dz6Student(urlLink, name, age, id)
             Dz6StudentManager.addNewStudent(newStudent)
             val intent = Intent(this, Dz6StudentListActivity::class.java)
             startActivity(intent)
-            finish()
         } else {
-            Toast.makeText(this, "Incorrect Link", Toast.LENGTH_SHORT).show()
+            isEnterRight = true
+        }
+        finish()
+    }
+
+    private fun isUrl(url: String): Boolean {
+        if (url.startsWith("http", true)) return true
+        if (url.startsWith("https ", true)) return true
+        if (url.startsWith("www", true)) return true
+        return false
+    }
+
+    private fun checkCorrectEnterFields() {
+        if (isUrl(dz6urlEditText.text.toString())) {
+            urlLink = dz6urlEditText.text.toString()
+        } else {
+            isEnterRight = false
+            Toast.makeText(this, getString(R.string.incorrect_link), Toast.LENGTH_SHORT).show()
+        }
+
+        if (dz6nameEditText.text.toString().isNotBlank()) {
+            name = dz6nameEditText.text.toString()
+        } else {
+            isEnterRight = false
+            Toast.makeText(this, getString(R.string.empty_name_field), Toast.LENGTH_SHORT).show()
+        }
+
+        if (dz6ageEditText.text.toString().toIntOrNull() != null) {
+            age = dz6ageEditText.text.toString().toInt()
+        } else {
+            isEnterRight = false
+            Toast.makeText(this, getString(R.string.incorrect_number), Toast.LENGTH_SHORT).show()
         }
     }
 }
