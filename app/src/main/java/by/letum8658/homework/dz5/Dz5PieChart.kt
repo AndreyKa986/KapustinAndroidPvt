@@ -5,10 +5,10 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
 import android.os.Build
-import android.support.annotation.RequiresApi
-import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import by.letum8658.homework.R
 import kotlin.math.PI
 import kotlin.math.cos
