@@ -13,6 +13,7 @@ import by.letum8658.homework.dz3.Dz3Activity
 import by.letum8658.homework.dz4.Dz4Activity
 import by.letum8658.homework.dz5.Dz5FirstActivity
 import by.letum8658.homework.dz5.Dz5SecondActivity
+import by.letum8658.homework.dz6.Dz6StudentListActivity
 
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,12 +37,15 @@ class MainActivity : Activity() {
 
         findViewById<Button>(R.id.dz4)
             .setOnClickListener { startDZ04() }
-                                 
+      
         findViewById<Button>(R.id.dz5f)
             .setOnClickListener { startDZ05f() }
 
         findViewById<Button>(R.id.dz5s)
             .setOnClickListener { startDZ05s() }
+
+        findViewById<Button>(R.id.dz6)
+            .setOnClickListener { startDZ06() }
     }
 
     private fun startDZ00() {
@@ -81,6 +85,11 @@ class MainActivity : Activity() {
 
     private fun startDZ05s() {
         val intent = Intent(this, Dz5SecondActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun startDZ06() {
+        val intent = Intent(this, Dz6StudentListActivity::class.java)
         startActivity(intent)
     }
 }

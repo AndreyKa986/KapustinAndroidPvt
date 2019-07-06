@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <EditText
+        android:id="@+id/dz6urlEditText"
+        style="@style/Dz6EditText"
+        android:hint="@string/url_image"
+        android:imeOptions="actionNext"
+        android:inputType="textWebEmailAddress" />
+
+    <EditText
+        android:id="@+id/dz6nameEditText"
+        style="@style/Dz6EditText"
+        android:hint="@string/name"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords" />
+
+    <EditText
+        android:id="@+id/dz6ageEditText"
+        style="@style/Dz6EditText"
+        android:hint="@string/age"
+        android:imeOptions="actionDone"
+        android:inputType="number" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/dz6saveButton"
+        style="@style/Dz6Button"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/yellow"
+        android:text="@string/save" />
+</LinearLayout>

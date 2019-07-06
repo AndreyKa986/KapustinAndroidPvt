@@ -11,6 +11,7 @@
     <string name="dz04">04</string>
     <string name="dz05f">05f</string>
     <string name="dz05s">05s</string>
+    <string name="dz06">06</string>
     <string name="austriaFlag">Austria Flag</string>
     <string name="polandFlag">Poland Flag</string>
     <string name="italyFlag">Italy Flag</string>
@@ -49,4 +50,13 @@
     <string name="followers">Followers</string>
     <string name="dz3_string">Dylan Conner</string>
     <string name="create_random_pie_chart">Create Random Pie Chart</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="url_image">Url Image</string>
+    <string name="age">Age</string>
+    <string name="save">Save</string>
+    <string name="search">Search</string>
+    <string name="incorrect_link">Incorrect Link</string>
+    <string name="empty_name_field">Empty Name Field</string>
+    <string name="incorrect_number">Incorrect Number</string>
 </resources>
