@@ -33,6 +33,7 @@
 
         <activity
             android:name=".dz6.Dz6StudentListActivity"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".dz6.Dz6StudentDetailsActivity" />
         <activity android:name=".dz6.Dz6StudentEditActivity" />

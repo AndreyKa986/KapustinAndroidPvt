@@ -56,10 +56,10 @@ class Dz6StudentEditActivity : Activity() {
             Dz6StudentManager.updateStudent(newStudent)
             val intent = Intent(this, Dz6StudentListActivity::class.java)
             startActivity(intent)
+            finish()
         } else {
             isEnterRight = true
         }
-        finish()
     }
 
     private fun saveNewStudent() {
@@ -69,15 +69,14 @@ class Dz6StudentEditActivity : Activity() {
             Dz6StudentManager.addNewStudent(newStudent)
             val intent = Intent(this, Dz6StudentListActivity::class.java)
             startActivity(intent)
+            finish()
         } else {
             isEnterRight = true
         }
-        finish()
     }
 
     private fun isUrl(url: String): Boolean {
         if (url.startsWith("http", true)) return true
-        if (url.startsWith("https ", true)) return true
         if (url.startsWith("www", true)) return true
         return false
     }
