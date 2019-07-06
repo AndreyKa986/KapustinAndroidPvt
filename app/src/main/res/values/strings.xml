@@ -9,6 +9,8 @@
     <string name="dz02h">02h</string>
     <string name="dz03">03</string>
     <string name="dz04">04</string>
+    <string name="dz05f">05f</string>
+    <string name="dz05s">05s</string>
     <string name="dz06">06</string>
     <string name="austriaFlag">Austria Flag</string>
     <string name="polandFlag">Poland Flag</string>
@@ -47,6 +49,7 @@
     <string name="following">Following</string>
     <string name="followers">Followers</string>
     <string name="dz3_string">Dylan Conner</string>
+    <string name="create_random_pie_chart">Create Random Pie Chart</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="url_image">Url Image</string>
