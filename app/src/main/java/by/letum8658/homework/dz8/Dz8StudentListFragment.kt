@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,7 @@ class Dz8StudentListFragment : Fragment(), Dz6StudentListAdapter.ClickListener {
     private lateinit var prefsManager: AppPrefManager
     private lateinit var search: EditText
     private lateinit var adapter: Dz6StudentListAdapter
+    private var searchString: String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_dz8_student_list, container, false)
@@ -74,7 +76,9 @@ class Dz8StudentListFragment : Fragment(), Dz6StudentListAdapter.ClickListener {
     override fun onResume() {
         super.onResume()
         val text = prefsManager.getSearchText()
-        if (text.isNotBlank()) {
+        if (text != searchString) {
+            searchString = text
+            Log.d("AAA", "AAA")
             updateList()
         }
     }
@@ -82,6 +86,7 @@ class Dz8StudentListFragment : Fragment(), Dz6StudentListAdapter.ClickListener {
     override fun onStop() {
         super.onStop()
         prefsManager.saveSearchText(search.text.toString())
+        searchString = search.text.toString()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
