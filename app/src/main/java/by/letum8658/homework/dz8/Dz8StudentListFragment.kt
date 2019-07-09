@@ -76,7 +76,6 @@ class Dz8StudentListFragment : Fragment(), Dz6StudentListAdapter.ClickListener {
         super.onResume()
         val text = prefsManager.getSearchText()
         if (text != searchString) {
-            searchString = text
             updateList()
         }
     }
