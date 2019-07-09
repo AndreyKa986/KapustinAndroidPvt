@@ -40,7 +40,6 @@ class Dz8StudentListFragment : Fragment(), Dz6StudentListAdapter.ClickListener {
         recycleView.adapter = adapter
 
         prefsManager = AppPrefManager(context!!)
-
         search = dz8searchEditText
         search.setText(prefsManager.getSearchText())
         search.addTextChangedListener(object : TextWatcher {
@@ -74,7 +73,10 @@ class Dz8StudentListFragment : Fragment(), Dz6StudentListAdapter.ClickListener {
 
     override fun onResume() {
         super.onResume()
-        updateList()
+        val text = prefsManager.getSearchText()
+        if (text.isNotBlank()) {
+            updateList()
+        }
     }
 
     override fun onStop() {
