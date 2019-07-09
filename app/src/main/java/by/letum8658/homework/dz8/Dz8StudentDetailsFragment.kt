@@ -34,7 +34,6 @@ class Dz8StudentDetailsFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         id = arguments?.getLong(ID_KEY, -1) ?: -1
-        retainInstance
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -26,11 +26,6 @@ class Dz8StudentListFragment : Fragment(), Dz6StudentListAdapter.ClickListener {
     private lateinit var search: EditText
     private lateinit var adapter: Dz6StudentListAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_dz8_student_list, container, false)
     }
@@ -54,11 +49,7 @@ class Dz8StudentListFragment : Fragment(), Dz6StudentListAdapter.ClickListener {
             private lateinit var workRunnable: Runnable
 
             override fun afterTextChanged(string: Editable?) {
-
-                workRunnable = Runnable {
-                    val searchString = string.toString()
-                    searchByStudents(searchString)
-                }
+                workRunnable = Runnable { updateList() }
                 handler.removeCallbacks(workRunnable)
                 handler.postDelayed(workRunnable, 300L)
             }
@@ -83,7 +74,7 @@ class Dz8StudentListFragment : Fragment(), Dz6StudentListAdapter.ClickListener {
 
     override fun onResume() {
         super.onResume()
-        searchByStudents(search.text.toString())
+        updateList()
     }
 
     override fun onStop() {
@@ -106,6 +97,10 @@ class Dz8StudentListFragment : Fragment(), Dz6StudentListAdapter.ClickListener {
     override fun onDetach() {
         super.onDetach()
         listener = null
+    }
+
+    fun updateList() {
+        searchByStudents(search.text.toString())
     }
 
     interface Listener {

@@ -2,9 +2,11 @@ package by.letum8658.homework.dz8
 
 import android.content.res.Configuration
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import by.letum8658.homework.R
+
+private const val BACK_STACK_NAME = "back_stack_name"
 
 class Dz8Activity : FragmentActivity(),
     Dz8StudentListFragment.Listener,
@@ -29,39 +31,39 @@ class Dz8Activity : FragmentActivity(),
     }
 
     override fun onStudentClick(id: Long) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(container, Dz8StudentDetailsFragment.getInstance(id))
-        transaction.addToBackStack(null)
-        transaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(container, Dz8StudentDetailsFragment.getInstance(id))
+            .addToBackStack(BACK_STACK_NAME)
+            .commit()
     }
 
     override fun onFABClick() {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(container, Dz8StudentEditFragment.getInstance(-1))
-        transaction.addToBackStack(null)
-        transaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(container, Dz8StudentEditFragment.getInstance(-1))
+            .addToBackStack(BACK_STACK_NAME)
+            .commit()
     }
 
     override fun onEditStudentClick(id: Long) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(container, Dz8StudentEditFragment.getInstance(id))
-        transaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(container, Dz8StudentEditFragment.getInstance(id))
+            .addToBackStack(BACK_STACK_NAME)
+            .commit()
     }
 
     override fun onSaveOrDeleteStudentClick() {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.dz8containerOne, Dz8StudentListFragment())
-        if (isLandscape) {
-            transaction.replace(R.id.dz8containerTwo, Fragment())
+        onBackPressed()
+        val fragment = supportFragmentManager.findFragmentById(R.id.dz8containerOne)
+        if (fragment is Dz8StudentListFragment) {
+            fragment.updateList()
         }
-        supportFragmentManager.popBackStack()
-        transaction.commit()
     }
 
-    private fun getContainer(): Int {
-        return when (isLandscape) {
-            true -> R.id.dz8containerTwo
-            false -> R.id.dz8containerOne
+    override fun onBackPressed() {
+        if (!supportFragmentManager.popBackStackImmediate(BACK_STACK_NAME, POP_BACK_STACK_INCLUSIVE)) {
+            super.onBackPressed()
         }
     }
+
+    private fun getContainer() = if (isLandscape) R.id.dz8containerTwo else R.id.dz8containerOne
 }
