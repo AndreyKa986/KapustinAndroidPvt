@@ -71,7 +71,7 @@ class Dz8StudentEditFragment : Fragment() {
         if (isEnterRight) {
             newStudent = Dz6Student(urlLink, name, age, id)
             Dz6StudentManager.updateStudent(newStudent)
-            listener?.onSaveOrDeleteStudentClick()
+            listener?.onSaveStudentClick()
         } else {
             isEnterRight = true
         }
@@ -82,7 +82,7 @@ class Dz8StudentEditFragment : Fragment() {
             id = Dz6StudentManager.getId()
             newStudent = Dz6Student(urlLink, name, age, id)
             Dz6StudentManager.addNewStudent(newStudent)
-            listener?.onSaveOrDeleteStudentClick()
+            listener?.onSaveStudentClick()
         } else {
             isEnterRight = true
         }
@@ -130,6 +130,6 @@ class Dz8StudentEditFragment : Fragment() {
     }
 
     interface Listener {
-        fun onSaveOrDeleteStudentClick()
+        fun onSaveStudentClick()
     }
 }

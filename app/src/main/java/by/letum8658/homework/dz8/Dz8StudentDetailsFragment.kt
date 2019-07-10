@@ -51,7 +51,7 @@ class Dz8StudentDetailsFragment : Fragment() {
         dz8delete.setOnClickListener {
             student?.let {
                 deleteStudent(it)
-                listener?.onSaveOrDeleteStudentClick()
+                listener?.onDeleteStudentClick()
             }
         }
 
@@ -83,7 +83,7 @@ class Dz8StudentDetailsFragment : Fragment() {
     }
 
     interface Listener {
-        fun onSaveOrDeleteStudentClick()
+        fun onDeleteStudentClick()
         fun onEditStudentClick(id: Long)
     }
 }
