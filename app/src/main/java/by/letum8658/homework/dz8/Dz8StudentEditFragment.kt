@@ -29,10 +29,6 @@ class Dz8StudentEditFragment : Fragment() {
 
     private var listener: Listener? = null
     private lateinit var newStudent: Dz6Student
-    private var urlLink: String = " "
-    private var name: String = " "
-    private var age: Int = 0
-    private var isEnterRight: Boolean = true
     private var id: Long = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,34 +54,32 @@ class Dz8StudentEditFragment : Fragment() {
         }
 
         dz8saveButton.setOnClickListener {
-            checkCorrectEnterFields()
-            if (id < 0) {
-                saveNewStudent()
-            } else {
-                updateStudent()
+
+            val urlLink = dz8urlEditText.text.toString()
+            val name = dz8nameEditText.text.toString()
+            val age = dz8ageEditText.text.toString().toIntOrNull()
+
+            if (checkCorrectEnterFields(urlLink, name, age)) {
+                if (id < 0) {
+                    saveNewStudent(urlLink, name, age!!)
+                } else {
+                    updateStudent(urlLink, name, age!!)
+                }
             }
         }
     }
 
-    private fun updateStudent() {
-        if (isEnterRight) {
+    private fun updateStudent(urlLink: String, name: String, age: Int) {
             newStudent = Dz6Student(urlLink, name, age, id)
             Dz6StudentManager.updateStudent(newStudent)
             listener?.onSaveStudentClick()
-        } else {
-            isEnterRight = true
-        }
     }
 
-    private fun saveNewStudent() {
-        if (isEnterRight) {
+    private fun saveNewStudent(urlLink: String, name: String, age: Int) {
             id = Dz6StudentManager.getId()
             newStudent = Dz6Student(urlLink, name, age, id)
             Dz6StudentManager.addNewStudent(newStudent)
             listener?.onSaveStudentClick()
-        } else {
-            isEnterRight = true
-        }
     }
 
     private fun isUrl(url: String): Boolean {
@@ -94,27 +88,25 @@ class Dz8StudentEditFragment : Fragment() {
         return false
     }
 
-    private fun checkCorrectEnterFields() {
-        if (isUrl(dz8urlEditText.text.toString())) {
-            urlLink = dz8urlEditText.text.toString()
-        } else {
+    private fun checkCorrectEnterFields(urlLink: String, name: String, age: Int?): Boolean {
+        var isEnterRight = true
+
+        if (!isUrl(urlLink)) {
             isEnterRight = false
             Toast.makeText(context, getString(R.string.incorrect_link), Toast.LENGTH_SHORT).show()
         }
 
-        if (dz8nameEditText.text.toString().isNotBlank()) {
-            name = dz8nameEditText.text.toString()
-        } else {
+        if (name.isBlank()) {
             isEnterRight = false
             Toast.makeText(context, getString(R.string.empty_name_field), Toast.LENGTH_SHORT).show()
         }
 
-        if (dz8ageEditText.text.toString().toIntOrNull() != null) {
-            age = dz8ageEditText.text.toString().toInt()
-        } else {
+        if (age == null) {
             isEnterRight = false
             Toast.makeText(context, getString(R.string.incorrect_number), Toast.LENGTH_SHORT).show()
         }
+
+        return isEnterRight
     }
 
     override fun onAttach(context: Context?) {

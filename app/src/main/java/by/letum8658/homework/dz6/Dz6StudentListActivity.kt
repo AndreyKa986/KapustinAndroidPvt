@@ -30,7 +30,6 @@ class Dz6StudentListActivity : Activity(), Dz6StudentListAdapter.ClickListener {
         recycleView.adapter = adapter
 
         val search = dz6searchEditText
-        search.text.clear()
         search.addTextChangedListener(object : TextWatcher {
 
             private val handler = Handler(Looper.getMainLooper())
