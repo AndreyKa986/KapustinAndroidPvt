@@ -1,7 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="by.letum8658.homework">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,37 +15,43 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".dz0.Dz0Activity" />
-
         <activity android:name=".dz1.Dz1Activity" />
-
         <activity android:name=".dz2.Dz2ClassActivity" />
         <activity android:name=".dz2.Dz2HomeActivity" />
-
         <activity android:name=".dz3.Dz3Activity" />
-
         <activity android:name=".dz4.Dz4Activity" />
-
         <activity android:name=".dz5.Dz5FirstActivity" />
         <activity android:name=".dz5.Dz5SecondActivity" />
-
         <activity
             android:name=".dz6.Dz6StudentListActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".dz6.Dz6StudentDetailsActivity" />
         <activity android:name=".dz6.Dz6StudentEditActivity" />
-
         <activity
             android:name=".dz8.Dz8Activity"
-            android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".dz9.Dz9Activity" />
     </application>
+
 </manifest>
