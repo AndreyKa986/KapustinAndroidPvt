@@ -7,6 +7,8 @@ import android.widget.Button
 import by.letum8658.homework.R
 import by.letum8658.homework.dz0.Dz0Activity
 import by.letum8658.homework.dz1.Dz1Activity
+import by.letum8658.homework.dz11.Dz11CarActivity
+import by.letum8658.homework.dz11.Dz11StudentActivity
 import by.letum8658.homework.dz2.Dz2ClassActivity
 import by.letum8658.homework.dz2.Dz2HomeActivity
 import by.letum8658.homework.dz3.Dz3Activity
@@ -54,6 +56,12 @@ class MainActivity : Activity() {
 
         findViewById<Button>(R.id.dz9)
             .setOnClickListener { startDZ09() }
+
+        findViewById<Button>(R.id.dz11s)
+            .setOnClickListener { startDZ11s() }
+
+        findViewById<Button>(R.id.dz11c)
+            .setOnClickListener { startDZ11c() }
     }
 
     private fun startDZ00() {
@@ -108,6 +116,16 @@ class MainActivity : Activity() {
 
     private fun startDZ09() {
         val intent = Intent(this, Dz9Activity::class.java)
+        startActivity(intent)
+    }
+
+    private fun startDZ11s() {
+        val intent = Intent(this, Dz11StudentActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun startDZ11c() {
+        val intent = Intent(this, Dz11CarActivity::class.java)
         startActivity(intent)
     }
 }
