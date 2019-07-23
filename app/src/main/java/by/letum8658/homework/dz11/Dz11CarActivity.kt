@@ -33,6 +33,7 @@ class Dz11CarActivity : FragmentActivity(), OnMapReadyCallback {
     private lateinit var poiPicture: BitmapDescriptor
     private var isOnePoiOnScreenNow = false
     private lateinit var viewModel: Dz11CarViewModel
+    private var isMapReady = false
 
     companion object {
         const val PADDING = 100
@@ -65,10 +66,10 @@ class Dz11CarActivity : FragmentActivity(), OnMapReadyCallback {
             .observe(this, Observer {
                 when (it) {
                     is Dz11CarState.AllData -> {
-                        showPoi(it.poiList)
+                        if (isMapReady) showPoi(it.poiList)
                     }
                     is Dz11CarState.OnePoiOfData -> {
-                        onPoiClick(it.poi)
+                        if (isMapReady) onPoiClick(it.poi)
                     }
                     is Dz11CarState.Error -> {
                         Toast.makeText(this, getText(R.string.sorry2), Toast.LENGTH_SHORT).show()
@@ -81,6 +82,7 @@ class Dz11CarActivity : FragmentActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
+        isMapReady = true
     }
 
     private fun showPoi(poiList: List<Poi>) {
