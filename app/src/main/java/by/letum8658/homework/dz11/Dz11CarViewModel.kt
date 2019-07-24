@@ -16,7 +16,11 @@ class Dz11CarViewModel : ViewModel(), CarRepositoryResult {
     }
 
     fun loadPoiList(params: CoordParams) {
-        provideCarRepository().getCarByCoord(params, this)
+        if (poiList.isEmpty()) {
+            provideCarRepository().getCarByCoord(params, this)
+        } else {
+            state.value = Dz11CarState.AllData(poiList)
+        }
     }
 
     fun getPoiList(): List<Poi> = poiList

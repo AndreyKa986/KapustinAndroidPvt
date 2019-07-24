@@ -83,6 +83,7 @@ class Dz11CarActivity : FragmentActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         isMapReady = true
+        if (viewModel.getPoiList().isNotEmpty()) showPoi(viewModel.getPoiList())
     }
 
     private fun showPoi(poiList: List<Poi>) {
