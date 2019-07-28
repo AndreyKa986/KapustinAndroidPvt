@@ -14,6 +14,8 @@
     <string name="dz06">06</string>
     <string name="dz08">08</string>
     <string name="dz09">09</string>
+    <string name="dz11s">11s</string>
+    <string name="dz11c">11c</string>
     <string name="austriaFlag">Austria Flag</string>
     <string name="polandFlag">Poland Flag</string>
     <string name="italyFlag">Italy Flag</string>
@@ -62,4 +64,5 @@
     <string name="empty_name_field">Empty Name Field</string>
     <string name="incorrect_number">Incorrect Number</string>
     <string name="sorry2">Sorry, Something Went Wrong.</string>
+    <string name="incorrect_information">Sorry, Incorrect Information</string>
 </resources>
