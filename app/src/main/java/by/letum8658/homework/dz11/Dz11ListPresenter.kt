@@ -18,7 +18,7 @@ class Dz11ListPresenter {
 
     fun getSearchList(string: String): List<Dz6Student> = Dz6StudentManager.searchList(string)
 
-    fun getTextForSearh(): String = prefsManager.getSearchText()
+    fun getTextForSearch(): String = prefsManager.getSearchText()
 
     fun saveTextForSearch(text: String) = prefsManager.saveSearchText(text)
 

@@ -1,4 +1,4 @@
-package by.letum8658.homework.dz11
+package by.letum8658.homework.dz12
 
 import android.content.Context
 import android.os.Bundle
@@ -13,16 +13,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.letum8658.homework.R
-import by.letum8658.homework.dz6.Dz6Student
-import by.letum8658.homework.dz6.Dz6StudentListAdapter
 import by.letum8658.homework.dz8.AppPrefManager
 import kotlinx.android.synthetic.main.fragment_dz8_student_list.*
 
-class Dz11ListFragment : Fragment(), Dz11ListView, Dz6StudentListAdapter.ClickListener {
+class Dz12ListFragment : Fragment(), Dz12ListView, Dz12Adapter.ClickListener {
 
-    private val presenter = Dz11ListPresenter()
+    private val presenter = Dz12ListPresenter()
     private var listener: Listener? = null
-    private lateinit var adapter: Dz6StudentListAdapter
+    private lateinit var adapter: Dz12Adapter
     private var searchString: String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -36,7 +34,9 @@ class Dz11ListFragment : Fragment(), Dz11ListView, Dz6StudentListAdapter.ClickLi
         recycleView.setHasFixedSize(true)
         recycleView.layoutManager = LinearLayoutManager(context)
 
-        adapter = Dz6StudentListAdapter(presenter.getDatabase(), this)
+        presenter.getDatabase()
+
+        adapter = Dz12Adapter(emptyList(), this)
         recycleView.adapter = adapter
 
         dz8searchEditText.setText(presenter.getTextForSearch())
@@ -61,7 +61,7 @@ class Dz11ListFragment : Fragment(), Dz11ListView, Dz6StudentListAdapter.ClickLi
         }
     }
 
-    override fun onStudentClick(item: Dz6Student) {
+    override fun onStudentClick(item: Student) {
         listener?.onStudentClick(item.id)
     }
 
@@ -102,11 +102,15 @@ class Dz11ListFragment : Fragment(), Dz11ListView, Dz6StudentListAdapter.ClickLi
     }
 
     interface Listener {
-        fun onStudentClick(id: Long)
+        fun onStudentClick(id: Int)
         fun onFABClick()
     }
 
     override fun getPrefsManager(): AppPrefManager = AppPrefManager(context!!)
 
     override fun requirePrefsManager(): AppPrefManager = AppPrefManager(requireContext())
+
+    override fun updateAdapter(list: List<Student>) {
+        adapter.giveStudentListBySearch(list)
+    }
 }
