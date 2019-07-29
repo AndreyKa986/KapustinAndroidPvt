@@ -10,17 +10,17 @@ object Dz12StudentManager {
     private val repository = provideStudentRepository()
     private var disposable: Disposable? = null
 
-    fun getStudentList(): MutableList<Student> {
-        if (studentsList.isEmpty()) {
-            disposable = repository
-                .getAll()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    studentsList = it
-                }
-        }
-        return studentsList
+    fun getStudentList(): MutableList<Student> = studentsList
+
+    fun loadStudentList(callback: Callback) {
+        disposable = repository
+            .getAll()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                studentsList = it
+                callback.returnResult()
+            }
     }
 
     fun getStudentById(id: Int): Student? {

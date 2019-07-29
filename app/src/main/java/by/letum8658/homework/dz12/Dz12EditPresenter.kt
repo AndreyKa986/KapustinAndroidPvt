@@ -1,13 +1,11 @@
 package by.letum8658.homework.dz12
 
 import by.letum8658.homework.dz11.Dz11EditView
-import by.letum8658.homework.dz6.Dz6Student
-import by.letum8658.homework.dz6.Dz6StudentManager
 
 class Dz12EditPresenter {
 
     private var view: Dz11EditView? = null
-    private lateinit var student: Dz6Student
+    private lateinit var student: Student
 
     fun setView(view: Dz11EditView?) {
         this.view = view
@@ -15,7 +13,7 @@ class Dz12EditPresenter {
 
     fun showStudentInformation(id: Int) {
         if (id > 0) {
-            student = Dz6StudentManager.getStudentById(id.toLong())!!
+            student = Dz12StudentManager.getStudentById(id)!!
             val urlLink = student.imageUrl
             val name = student.name
             val age = student.age
@@ -58,14 +56,14 @@ class Dz12EditPresenter {
 
     private fun updateStudent(urlLink: String, name: String, age: Int, id: Int) {
         val newStudent = Student(urlLink, name, age, id)
-//        Dz6StudentManager.updateStudent(newStudent)
+        Dz12StudentManager.updateStudent(newStudent)
         view?.backToMainFragment()
     }
 
     private fun saveNewStudent(urlLink: String, name: String, age: Int) {
-        val id = Dz6StudentManager.getId()
-        val newStudent = Dz6Student(urlLink, name, age, id)
-        Dz6StudentManager.addNewStudent(newStudent)
+        val id = Dz12StudentManager.getId()
+        val newStudent = Student(urlLink, name, age, id)
+        Dz12StudentManager.addNewStudent(newStudent)
         view?.backToMainFragment()
     }
 }

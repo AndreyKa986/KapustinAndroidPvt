@@ -12,7 +12,19 @@ class Dz12ListPresenter {
         prefsManager = view?.getPrefsManager()!!
     }
 
-    fun getDatabase(): List<Student> = Dz12StudentManager.getStudentList()
+    fun getDatabase(): List<Student> {
+        val studentList = Dz12StudentManager.getStudentList()
+        if (studentList.isEmpty()) {
+            view?.progressBarOn()
+            Dz12StudentManager.loadStudentList(object : Callback() {
+                override fun returnResult() {
+                    view?.progressBarOff()
+                    view?.updateDatabase()
+                }
+            })
+        }
+        return studentList
+    }
 
     fun getSearchList(string: String): List<Student> = Dz12StudentManager.searchList(string)
 

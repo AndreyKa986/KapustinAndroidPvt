@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,21 +23,22 @@ class Dz12ListFragment : Fragment(), Dz12ListView, Dz12Adapter.ClickListener {
     private var listener: Listener? = null
     private lateinit var adapter: Dz12Adapter
     private var searchString: String = ""
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_dz8_student_list, container, false)
+        return inflater.inflate(R.layout.fragment_dz12_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         presenter.setView(this)
 
+        progressBar = view.findViewById(R.id.dz12_progress_circular)
+
         val recycleView = view.findViewById<RecyclerView>(R.id.dz8recyclerView)
         recycleView.setHasFixedSize(true)
         recycleView.layoutManager = LinearLayoutManager(context)
 
-        presenter.getDatabase()
-
-        adapter = Dz12Adapter(emptyList(), this)
+        adapter = Dz12Adapter(presenter.getDatabase(), this)
         recycleView.adapter = adapter
 
         dz8searchEditText.setText(presenter.getTextForSearch())
@@ -110,7 +112,15 @@ class Dz12ListFragment : Fragment(), Dz12ListView, Dz12Adapter.ClickListener {
 
     override fun requirePrefsManager(): AppPrefManager = AppPrefManager(requireContext())
 
-    override fun updateAdapter(list: List<Student>) {
-        adapter.giveStudentListBySearch(list)
+    override fun updateDatabase() {
+        updateList()
+    }
+
+    override fun progressBarOn() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    override fun progressBarOff() {
+        progressBar.visibility = View.INVISIBLE
     }
 }

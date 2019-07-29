@@ -6,5 +6,7 @@ interface Dz12ListView {
 
     fun getPrefsManager(): AppPrefManager
     fun requirePrefsManager(): AppPrefManager
-    fun updateAdapter(list: List<Student>)
+    fun updateDatabase()
+    fun progressBarOn()
+    fun progressBarOff()
 }
