@@ -14,7 +14,7 @@ object Dz12StudentManager {
 
     fun loadStudentList(callback: Callback) {
         disposable = repository
-            .getAll()
+            .getAll(100)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
@@ -23,12 +23,17 @@ object Dz12StudentManager {
             }
     }
 
-    fun getStudentById(id: Int): Student? {
+    fun getStudentById(id: String): Student? {
         return studentsList.find { it.id == id }
     }
 
     fun deleteStudentById(student: Student) {
         studentsList.remove(student)
+        disposable = repository
+            .deleteStudent(student)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
     }
 
     fun updateStudent(newStudent: Student) {
@@ -36,17 +41,34 @@ object Dz12StudentManager {
         val oldStudent = studentsList.find { it.id == id }
         val index = studentsList.indexOf(oldStudent)
         studentsList[index] = newStudent
+        disposable = repository
+            .updateStudent(newStudent)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
     }
 
     fun addNewStudent(student: Student) {
         studentsList.add(student)
+        disposable = repository
+            .saveNewStudent(student)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                val index = studentsList.indexOf(student)
+                studentsList[index] = it
+            }
     }
 
     fun searchList(string: String): List<Student> {
         return studentsList.filter { it.name.contains(string, true) }
     }
 
-    fun getId(): Int {
-        return System.currentTimeMillis().toInt()
+    fun getId(): String {
+        return System.currentTimeMillis().toString()
+    }
+
+    fun dispose() {
+        disposable?.dispose()
     }
 }

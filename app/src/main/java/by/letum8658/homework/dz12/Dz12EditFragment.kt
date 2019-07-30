@@ -18,10 +18,10 @@ class Dz12EditFragment : Fragment(), Dz11EditView {
 
         private const val ID_KEY = "id_key"
 
-        fun getInstance(id: Int): Dz12EditFragment {
+        fun getInstance(id: String): Dz12EditFragment {
             val fragment = Dz12EditFragment()
             val bundle = Bundle()
-            bundle.putInt(ID_KEY, id)
+            bundle.putString(ID_KEY, id)
             fragment.arguments = bundle
             return fragment
         }
@@ -29,7 +29,7 @@ class Dz12EditFragment : Fragment(), Dz11EditView {
 
     private val presenter = Dz12EditPresenter()
     private var listener: Listener? = null
-    private var idStudent: Int = -1
+    private var idStudent: String = " "
     private lateinit var imageUrlText: EditText
     private lateinit var nameText: EditText
     private lateinit var ageText: EditText
@@ -37,7 +37,7 @@ class Dz12EditFragment : Fragment(), Dz11EditView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        idStudent = arguments?.getInt(ID_KEY, -1) ?: -1
+        idStudent = arguments?.getString(ID_KEY, " ") ?: " "
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

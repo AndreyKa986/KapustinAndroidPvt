@@ -11,8 +11,8 @@ class Dz12EditPresenter {
         this.view = view
     }
 
-    fun showStudentInformation(id: Int) {
-        if (id > 0) {
+    fun showStudentInformation(id: String) {
+        if (id.isNotBlank()) {
             student = Dz12StudentManager.getStudentById(id)!!
             val urlLink = student.imageUrl
             val name = student.name
@@ -21,12 +21,12 @@ class Dz12EditPresenter {
         }
     }
 
-    fun onSaveButtonClick(id: Int) {
+    fun onSaveButtonClick(id: String) {
         val urlLink = view?.getLink()!!
         val name = view?.getName()!!
         val age = view?.getAge()
         if (checkCorrectEnterFields(urlLink, name, age)) {
-            if (id < 0) {
+            if (id.isBlank()) {
                 saveNewStudent(urlLink, name, age!!)
             } else {
                 updateStudent(urlLink, name, age!!, id)
@@ -54,7 +54,7 @@ class Dz12EditPresenter {
         return isEnterRight
     }
 
-    private fun updateStudent(urlLink: String, name: String, age: Int, id: Int) {
+    private fun updateStudent(urlLink: String, name: String, age: Int, id: String) {
         val newStudent = Student(urlLink, name, age, id)
         Dz12StudentManager.updateStudent(newStudent)
         view?.backToMainFragment()

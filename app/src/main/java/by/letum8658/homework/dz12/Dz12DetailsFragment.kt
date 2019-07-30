@@ -19,10 +19,10 @@ class Dz12DetailsFragment : Fragment(), Dz11DetailsView {
 
         private const val ID_KEY = "id_key"
 
-        fun getInstance(id: Int): Dz12DetailsFragment {
+        fun getInstance(id: String): Dz12DetailsFragment {
             val fragment = Dz12DetailsFragment()
             val bundle = Bundle()
-            bundle.putInt(ID_KEY, id)
+            bundle.putString(ID_KEY, id)
             fragment.arguments = bundle
             return fragment
         }
@@ -30,7 +30,7 @@ class Dz12DetailsFragment : Fragment(), Dz11DetailsView {
 
     private val presenter = Dz12DetailsPresenter()
     private var listener: Listener? = null
-    private var idStudent: Int = -1
+    private var idStudent: String = " "
     private lateinit var imageView: ImageView
     private lateinit var nameView: TextView
     private lateinit var ageView: TextView
@@ -38,7 +38,7 @@ class Dz12DetailsFragment : Fragment(), Dz11DetailsView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        idStudent = arguments?.getInt(ID_KEY, -1) ?: -1
+        idStudent = arguments?.getString(ID_KEY, " ") ?: " "
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -85,6 +85,6 @@ class Dz12DetailsFragment : Fragment(), Dz11DetailsView {
 
     interface Listener {
         fun onDeleteStudentClick()
-        fun onEditStudentClick(id: Int)
+        fun onEditStudentClick(id: String)
     }
 }

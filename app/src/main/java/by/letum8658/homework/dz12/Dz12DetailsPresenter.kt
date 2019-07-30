@@ -11,7 +11,7 @@ class Dz12DetailsPresenter {
         this.view = view
     }
 
-    fun getStudent(id: Int) {
+    fun getStudent(id: String) {
         student = Dz12StudentManager.getStudentById(id)!!
     }
 
@@ -22,7 +22,5 @@ class Dz12DetailsPresenter {
         view?.showStudent(imageUrl, name, age)
     }
 
-    fun deleteStudent() {
-        Dz12StudentManager.deleteStudentById(student)
-    }
+    fun deleteStudent() = Dz12StudentManager.deleteStudentById(student)
 }

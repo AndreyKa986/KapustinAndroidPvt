@@ -96,6 +96,7 @@ class Dz12ListFragment : Fragment(), Dz12ListView, Dz12Adapter.ClickListener {
     override fun onDetach() {
         super.onDetach()
         listener = null
+        presenter.dispose()
     }
 
     fun updateList() {
@@ -104,7 +105,7 @@ class Dz12ListFragment : Fragment(), Dz12ListView, Dz12Adapter.ClickListener {
     }
 
     interface Listener {
-        fun onStudentClick(id: Int)
+        fun onStudentClick(id: String)
         fun onFABClick()
     }
 

@@ -27,7 +27,7 @@ class Dz12Activity : FragmentActivity(),
         }
     }
 
-    override fun onStudentClick(id: Int) {
+    override fun onStudentClick(id: String) {
         supportFragmentManager.beginTransaction()
             .replace(container, Dz12DetailsFragment.getInstance(id))
             .commit()
@@ -35,11 +35,11 @@ class Dz12Activity : FragmentActivity(),
 
     override fun onFABClick() {
         supportFragmentManager.beginTransaction()
-            .replace(container, Dz12EditFragment.getInstance(-1))
+            .replace(container, Dz12EditFragment.getInstance(" "))
             .commit()
     }
 
-    override fun onEditStudentClick(id: Int) {
+    override fun onEditStudentClick(id: String) {
         supportFragmentManager.beginTransaction()
             .replace(container, Dz12EditFragment.getInstance(id))
             .commit()

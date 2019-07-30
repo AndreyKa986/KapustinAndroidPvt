@@ -13,6 +13,6 @@ data class Student(
     @SerializedName("age")
     val age: Int,
 
-    @SerializedName("id")
-    val id: Int
+    @SerializedName("objectId")
+    val id: String
 )

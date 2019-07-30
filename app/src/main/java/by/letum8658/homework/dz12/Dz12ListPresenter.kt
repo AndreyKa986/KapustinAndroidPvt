@@ -33,4 +33,6 @@ class Dz12ListPresenter {
     fun saveTextForSearch(text: String) = prefsManager.saveSearchText(text)
 
     fun requirePrefsManager() = view?.requirePrefsManager()
+
+    fun dispose() = Dz12StudentManager.dispose()
 }
