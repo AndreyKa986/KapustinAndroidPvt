@@ -5,6 +5,8 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 object Dz12StudentManager {
+    private const val PAGE_SIZE = 100
+
     private var studentsList: MutableList<Student> = mutableListOf()
 
     private val repository = provideStudentRepository()
@@ -14,7 +16,7 @@ object Dz12StudentManager {
 
     fun loadStudentList(callback: Callback) {
         disposable = repository
-            .getAll(100)
+            .getAll(PAGE_SIZE)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {

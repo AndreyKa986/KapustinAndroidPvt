@@ -88,6 +88,7 @@ class Dz12EditFragment : Fragment(), Dz11EditView {
     override fun onDetach() {
         super.onDetach()
         listener = null
+        presenter.detach()
     }
 
     interface Listener {

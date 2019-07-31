@@ -34,5 +34,8 @@ class Dz12ListPresenter {
 
     fun requirePrefsManager() = view?.requirePrefsManager()
 
-    fun dispose() = Dz12StudentManager.dispose()
+    fun detach() {
+        Dz12StudentManager.dispose()
+        view = null
+    }
 }

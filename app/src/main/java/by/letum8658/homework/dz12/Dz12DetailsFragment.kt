@@ -81,6 +81,7 @@ class Dz12DetailsFragment : Fragment(), Dz11DetailsView {
     override fun onDetach() {
         super.onDetach()
         listener = null
+        presenter.detach()
     }
 
     interface Listener {

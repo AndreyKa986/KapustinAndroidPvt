@@ -23,4 +23,8 @@ class Dz12DetailsPresenter {
     }
 
     fun deleteStudent() = Dz12StudentManager.deleteStudentById(student)
+
+    fun detach() {
+        view = null
+    }
 }

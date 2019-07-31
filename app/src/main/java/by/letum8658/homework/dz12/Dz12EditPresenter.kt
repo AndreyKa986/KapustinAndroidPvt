@@ -66,4 +66,8 @@ class Dz12EditPresenter {
         Dz12StudentManager.addNewStudent(newStudent)
         view?.backToMainFragment()
     }
+
+    fun detach() {
+        view = null
+    }
 }

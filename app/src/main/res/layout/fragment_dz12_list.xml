@@ -28,7 +28,7 @@
             android:indeterminateTint="@color/red"
             android:minWidth="150dp"
             android:minHeight="150dp"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dz8recyclerView"

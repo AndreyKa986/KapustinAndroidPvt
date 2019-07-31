@@ -96,7 +96,7 @@ class Dz12ListFragment : Fragment(), Dz12ListView, Dz12Adapter.ClickListener {
     override fun onDetach() {
         super.onDetach()
         listener = null
-        presenter.dispose()
+        presenter.detach()
     }
 
     fun updateList() {
@@ -122,6 +122,6 @@ class Dz12ListFragment : Fragment(), Dz12ListView, Dz12Adapter.ClickListener {
     }
 
     override fun progressBarOff() {
-        progressBar.visibility = View.INVISIBLE
+        progressBar.visibility = View.GONE
     }
 }
