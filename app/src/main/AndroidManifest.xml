@@ -48,6 +48,9 @@
             android:name=".dz11.Dz11StudentActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".dz11.Dz11CarActivity" />
+        <activity
+            android:name=".dz12.Dz12Activity"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>
