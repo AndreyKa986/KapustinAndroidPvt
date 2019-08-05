@@ -10,6 +10,7 @@ import by.letum8658.homework.dz1.Dz1Activity
 import by.letum8658.homework.dz11.Dz11CarActivity
 import by.letum8658.homework.dz11.Dz11StudentActivity
 import by.letum8658.homework.dz12.Dz12Activity
+import by.letum8658.homework.dz13.Dz13CarActivity
 import by.letum8658.homework.dz2.Dz2ClassActivity
 import by.letum8658.homework.dz2.Dz2HomeActivity
 import by.letum8658.homework.dz3.Dz3Activity
@@ -66,6 +67,9 @@ class MainActivity : Activity() {
 
         findViewById<Button>(R.id.dz12)
             .setOnClickListener { startDZ12() }
+
+        findViewById<Button>(R.id.dz13c)
+            .setOnClickListener { startDZ13c() }
     }
 
     private fun startDZ00() {
@@ -135,6 +139,11 @@ class MainActivity : Activity() {
 
     private fun startDZ12() {
         val intent = Intent(this, Dz12Activity::class.java)
+        startActivity(intent)
+    }
+
+    private fun startDZ13c() {
+        val intent = Intent(this, Dz13CarActivity::class.java)
         startActivity(intent)
     }
 }

@@ -51,6 +51,7 @@
         <activity
             android:name=".dz12.Dz12Activity"
             android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".dz13.Dz13CarActivity" />
     </application>
 
 </manifest>
