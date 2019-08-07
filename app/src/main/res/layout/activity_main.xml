@@ -104,7 +104,12 @@
             <Button
                 android:id="@+id/dz13c"
                 style="@style/ButtonForDz"
-                android:text="@string/dz13c"/>
+                android:text="@string/dz13c" />
+
+            <Button
+                android:id="@+id/dz13t"
+                style="@style/ButtonForDz"
+                android:text="@string/dz13t"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
