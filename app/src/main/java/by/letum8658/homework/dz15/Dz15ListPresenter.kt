@@ -14,11 +14,11 @@ class Dz15ListPresenter {
         prefsManager = view?.getPrefsManager()!!
     }
 
-    fun getDatabase(): List<Student> {
+    fun getDatabase(studentDao: StudentDao): List<Student> {
         val studentList = Dz15StudentManager.getStudentList()
         if (studentList.isEmpty()) {
             view?.progressBarOn()
-            Dz15StudentManager.loadStudentList(object : Callback() {
+            Dz15StudentManager.loadStudentList(studentDao, object : Callback() {
                 override fun returnResult() {
                     view?.progressBarOff()
                     view?.updateDatabase()

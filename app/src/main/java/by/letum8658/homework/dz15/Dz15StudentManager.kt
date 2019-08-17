@@ -15,15 +15,21 @@ object Dz15StudentManager {
 
     fun getStudentList(): MutableList<Student> = studentsList
 
-    fun loadStudentList(callback: Callback) {
+    fun loadStudentList(studentDao: StudentDao, callback: Callback) {
         disposable = repository
             .getAll(PAGE_SIZE)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
+            .subscribe({
                 studentsList = it
+//                studentDao.insert(studentsList)
                 callback.returnResult()
-            }
+            }, {
+                studentsList = studentDao.get()
+                if (studentsList.isNotEmpty()) {
+                    callback.returnResult()
+                }
+            })
     }
 
     fun getStudentById(id: String): Student? {
