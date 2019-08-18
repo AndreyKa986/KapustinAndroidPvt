@@ -39,7 +39,9 @@ class Dz15ListFragment : Fragment(), Dz12ListView, Dz15Adapter.ClickListener {
         recycleView.setHasFixedSize(true)
         recycleView.layoutManager = LinearLayoutManager(context)
 
-        adapter = Dz15Adapter(presenter.getDatabase(), this)
+        val studentDao = AppDatabase.getInstance(context!!).getStudentDao()
+
+        adapter = Dz15Adapter(presenter.getDatabase(studentDao), this)
         recycleView.adapter = adapter
 
         dz8searchEditText.setText(presenter.getTextForSearch())
