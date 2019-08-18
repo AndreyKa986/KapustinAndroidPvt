@@ -22,13 +22,24 @@ object Dz15StudentManager {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 studentsList = it
-//                studentDao.insert(studentsList)
-                callback.returnResult()
+                studentDao
+                    .insert(studentsList)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe {
+                        callback.returnResult()
+                    }
             }, {
-                studentsList = studentDao.get()
-                if (studentsList.isNotEmpty()) {
-                    callback.returnResult()
-                }
+                studentDao
+                    .get()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe { list ->
+                        if (list.isNotEmpty()) {
+                            studentsList = list
+                        }
+                        callback.returnResult()
+                    }
             })
     }
 
